@@ -20,7 +20,8 @@ control = True
 def cost(size):
     add_pepp = input('Do you want to add pepperoni? (y/n): ')
     extra_cheese = input('Do you want extra cheese? (y/n): ')
-    
+    side_total = 0 # to avoid weird "used before assigned" issues.
+
     if size.lower() == 's':
         if add_pepp.lower() == 'y':
             side_total += 2
