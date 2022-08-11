@@ -16,8 +16,8 @@ medium_pizza = 20
 small_pizza = 15
 control = True
 
-def sides(size):
-    side_total = 0
+
+def cost(size):
     add_pepp = input('Do you want to add pepperoni? (y/n): ')
     extra_cheese = input('Do you want extra cheese? (y/n): ')
     
@@ -26,41 +26,31 @@ def sides(size):
             side_total += 2
         if extra_cheese.lower() == 'y':
             side_total += 1
+        total = side_total + small_pizza
+        
 
-    else: # Fine with just assuming anything else is large or medium for price purposes.
+    elif size.lower() == 'm':
         if add_pepp.lower() == 'y':
             side_total += 3
         if extra_cheese.lower() == 'y':
             side_total += 1
+        total = side_total + medium_pizza
 
-    return side_total
+    elif size.lower() == 'l':
+        if add_pepp.lower() == 'y':
+            side_total += 3
+        if extra_cheese.lower() == 'y':
+            side_total += 1
+        total = side_total + large_pizza
 
-def make_total(side_cost, pizza_cost):
-    '''
-    to make the output formatting/calculation across menu items easier i made it a function
-    '''
-    total = side_cost + pizza_cost
     print(f'Your total is ${total:.2f}\n')
+    
 
 
 while control:
     print('What size pizza would you like?\nEnter q to quit: ')
     size = input('(l)arge: $25\n(m)edium: $20\n(s)mall: $15\nEnter your selection: ')
-    if size.lower() == 's':
-        side_cost = sides(size)
-        make_total(side_cost, small_pizza)
-    elif size.lower() == 'm':
-        side_cost = sides(size)
-        make_total(side_cost, medium_pizza)
-    elif size.lower() == 'l':
-        side_cost = sides(size)
-        make_total(side_cost, large_pizza)
-    elif size.lower() == 'q':
+    if size.lower() == 'q':
         control = False
-
-
-    
-
-
-
-
+    else:
+        cost(size)
