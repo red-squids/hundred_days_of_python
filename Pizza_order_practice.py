@@ -51,6 +51,7 @@ while control:
     print('What size pizza would you like?\nEnter q to quit: ')
     size = input('(l)arge: $25\n(m)edium: $20\n(s)mall: $15\nEnter your selection: ')
     if size.lower() == 'q':
+        print('Goodbye!\n')
         control = False
     else:
         cost(size)
